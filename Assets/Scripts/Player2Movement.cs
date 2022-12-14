@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player2Movement : MonoBehaviour
 {
@@ -11,8 +12,6 @@ public class Player2Movement : MonoBehaviour
     public GameObject Player1;
     public GameObject Opponent;
     public Vector3 OppPosition;
-    public bool FacingLeft = true;
-    public bool FacingRight = false;
     public int health = 100;
     public int currentHealth;
 
@@ -28,6 +27,24 @@ public class Player2Movement : MonoBehaviour
     void Update()
     {
         Player1Layer0 = animator.GetCurrentAnimatorStateInfo(0);
+
+
+        if(SaveScript.p1h <= 0)
+        {
+            SceneManager.LoadScene("MainMenu");
+
+        }
+        if (SaveScript3.p1h <= 0)
+        {
+            SceneManager.LoadScene("MainMenu");
+
+        }
+        if (SaveScript3.p3h <= 0)
+        {
+            SceneManager.LoadScene("MainMenu");
+
+        }
+
 
 
         //Flip Character
@@ -59,36 +76,11 @@ public class Player2Movement : MonoBehaviour
                 animator.SetBool("Forward", false);
             }
 
-            //Jumping and crouching
-            if (Input.GetAxis("VerticalP2") < 0)
-            {
-                if ((Input.GetAxis("VerticalP2") < 0))
-                {
-                    isJumping = true;
-                    animator.SetTrigger("Jump");
-                    StartCoroutine(JumpPause());
-                }
-            }
-            if ((Input.GetAxis("VerticalP2") > 0))
-            {
-                animator.SetBool("Crouch", true);
-            }
-            if((Input.GetAxis("VerticalP2") == 0))
-            {
-                animator.SetBool("Crouch", false);
-            }
-
+          
         }
 
-      //  slider.value = currentHealth;
     }
-
-    IEnumerator JumpPause()
-    {
-        yield return new WaitForSeconds(1.0f);
-        isJumping = false;
-
-    }
+    
 
     void RotateByDegrees()
     {

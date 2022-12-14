@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Player2Trigger : MonoBehaviour
 {
-    public int damage = -10;
     public Collider collider;
+    public float minusHealth = 0.1f;
+
 
     // Update is called once per frame
     void Update()
     {
-        if (Player1Actions.Contact == false)
+        if (Player2Actions.Contact == false)
         {
             collider.enabled = true;
 
@@ -25,15 +28,12 @@ public class Player2Trigger : MonoBehaviour
         if (other.gameObject.CompareTag("Player1"))
         {
             Player2Actions.Contact = true;
-        }
-        /*
+            SaveScript.p1h -= minusHealth;
 
-        var p1hs = collison.GetComponent<Player1HealthSystem>;
-        if (p1hs != null)
-        {
-            p1hs.takeDamage(damage);
+            
+            
         }
-        */
+       
 
 
     }

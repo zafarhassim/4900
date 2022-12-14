@@ -5,13 +5,18 @@ using UnityEngine;
 public class Player2Actions : MonoBehaviour
 {
     public float jumpMag = 0.01f;
-    public GameObject Player1;
+   // public GameObject Player1;
     public Animator animator;
     public static bool Contact = false;
+    public GameObject Opp;
+
 
     // Start is called before the first frame update
     void Start()
+
     {
+        Opp = GameObject.Find("Player1");
+
         animator = GetComponent<Animator>();
     }
 
@@ -24,7 +29,7 @@ public class Player2Actions : MonoBehaviour
             Contact = false;
 
         }
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             animator.SetTrigger("KickTwo");
             Contact = false;
@@ -42,11 +47,13 @@ public class Player2Actions : MonoBehaviour
             Contact = false;
 
         }
-    }
-
-    public void JumpUp()
-    {
-        Player1.transform.Translate(0, jumpMag, 0);
+        
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            animator.SetTrigger("Crouch");
+            Contact = false;
+        }
+       
     }
 
 

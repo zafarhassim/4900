@@ -32,15 +32,15 @@ public class Button : MonoBehaviour
     }
     public void Level1()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Oneplayer");
     }
     public void Level2()
     {
-        SceneManager.LoadScene("Level2");
+        SceneManager.LoadScene("ThreePlayer");
     }
     public void Level3()
     {
-        SceneManager.LoadScene("Level3");
+        SceneManager.LoadScene("AISceneTwo");
 
     }
 
